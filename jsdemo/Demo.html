@@ -1,0 +1,60 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang='en'>
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<title>Diff Text using javascript</title>
+
+<script type="text/javascript" src="resources/dojo.js"></script>
+<script type="text/javascript" src="resources/diffview.js"></script>
+<script type="text/javascript" src="resources/difflib.js"></script>
+<link type="text/css" rel="stylesheet" href="resources/diffview.css"/>
+
+<script type="text/javascript">
+    var $ = dojo.byId;
+    dojo.require("dojo.io");
+    var url = window.location.toString().split("#")[0];
+    function diffUsingJS() {
+    	var text1 = difflib.stringAsLines($("text1").value);
+    	var text2 = difflib.stringAsLines($("text2").value);
+    	var matcher = new difflib.SequenceMatcher(text1, text2);
+    	var opcodes = matcher.get_opcodes();
+    	var diffoutputdiv = $("diffoutput");
+
+        var diffResult = diffview.buildView({
+            baseTextLines: text1,
+            newTextLines: text2,
+            opcodes: opcodes,
+            baseTextName: "Text1",
+            newTextName: "Text2",
+            contextSize: null,
+            viewType: $("inline").checked ? 1 : 0
+        });
+
+        alert(diffResult.outerHTML);
+
+        while (diffoutputdiv.firstChild) {
+            diffoutputdiv.removeChild(diffoutputdiv.firstChild);        
+        }
+    	diffoutputdiv.appendChild(diffResult);
+    	window.location = url + "#diff"; 
+   	}
+
+</script>
+</head>
+<body>
+	<h1>Code Difference Comparison Tool</h1>
+
+	<strong>Diff Result View Type:</strong>
+	<input type="radio" name="_viewtype" checked="checked" id="sidebyside"/> Side by Side
+	<input type="radio" name="_viewtype" id="inline"/> Inline
+	<h2>First Text</h2>
+	<textarea id="text1" style="width:600px;height:300px"></textarea>
+
+	<h2>Second Text</h2>
+	<textarea id="text2" style="width:600px;height:300px"></textarea><br/>
+	<input type="button" value="Submit" onclick="javascript: diffUsingJS();"/><br/><br/>
+	<a name="diff"> </a>
+	<div id="diffoutput" style="width:100%"> </div>
+</body>
+</html>
