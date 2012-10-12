@@ -28,7 +28,7 @@ namespace DiffAndMerge
             var result = DiffUtil.ApplyPatch(baseFile, modifiedFile);
             Debug.Write(string.Format("Apply patch result:{0}", result));
 
-            //Diff
+            //Merge Text
             var mergedText = DiffUtil.MergeText(_sampleText1, _sampleText2);
             Debug.Write(string.Format("Merged text:{0}", mergedText));
         }
