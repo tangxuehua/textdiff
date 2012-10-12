@@ -1,0 +1,1 @@
+该例子通过Git实现文本的Diff，生成标准的diff文件，另外还实现了Apply Patch以及Merge Files的功能。

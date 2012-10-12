@@ -1,0 +1,17 @@
+Use Windows Command Lines:
+
+1. Diff file.
+git diff file1 file2 > diff.patch
+
+2. Statistic a patch file modify lines.
+git apply --stat patchFile > outputFile
+
+3. Apply a patch file.
+git apply patchFile
+
+4. Merge file.
+git merge-file --stdout current-file base-file other-file > mergedFile.txt
+
+Description:
+Incorporates all changes that lead from the base-file to other-file into current-file,
+and output the merge result to a seperate file.

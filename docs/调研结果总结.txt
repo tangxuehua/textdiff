@@ -1,0 +1,16 @@
+﻿Diff 百科介绍: http://en.wikipedia.org/wiki/Diff
+
+Diff要解决的核心问题是：Longest common subsequence problem（最长公共子序列问题），简称：LCS
+详细描述见：http://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+目前基于C#实现了算法用于查找LCS
+
+Diff文件格式详细介绍：http://www.cnblogs.com/netfocus/archive/2012/10/12/2720873.html
+
+目前已经实现了用c#来封装git command来：
+1）比较文件，生成diff文件（即patch文件）
+2）Apply Patch文件
+3) Merge 文件
+
+关于现实两个给定字符串的差异的基于Web的工具，目前找了一个基于js，一个基于c#实现的比较工具。
+但是比较算法是否和git的diff算法一致目前还不能确定，但从比较结果来看，我觉得都能在Web页面上显示文本的修改情况。
+如果要明确根据与git一致的diff算法的基于Web的比较工具，还需要在后续再调研。

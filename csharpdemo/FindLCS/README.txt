@@ -1,0 +1,1 @@
+基于C#实现的算法用于查找Loggest Common Sequence(LCS).
